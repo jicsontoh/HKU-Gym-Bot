@@ -1,15 +1,23 @@
+from telnetlib import EC
+
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 
-from selenium.webdriver.common.by import By
 
 ser = Service("/Applications/Google\ Chrome.app")
 # ser = Service(r"/Applications/Google\ Chrome.app")
 
-op = Options()
+op = webdriver.ChromeOptions()
 # op.add_argument('--headless')
+# op.add_argument("start-maximized")
+op.add_experimental_option("excludeSwitches", ["enable-automation"])
+op.add_experimental_option('useAutomationExtension', False)
 driver = webdriver.Chrome(service=ser, options=op)
 
 EMAIL = "u3611050@connect.hku.hk"
@@ -23,10 +31,8 @@ def hku_gym_bot():
     try:
         # website to open
         driver.get("https://fcbooking.cse.hku.hk/Form/SignUp")
-        driver.maximize_window()
-        sleep(10)
-
-        # click on join now button
+        # driver.maximize_window()
+        driver.set_window_size(100, 400)
 
         # // img[@class ="imageWithFallback"]
         # link = driver.find_element(By.XPATH, "//a[normalize-space()='sign up now']")
@@ -40,6 +46,33 @@ def hku_gym_bot():
         student_no = driver.find_element(By.XPATH, "//input[@id='MemberID']")
         student_no.send_keys(Student_no)
 
+        centre = Select(driver.find_element(By.XPATH, "//select[@id='CenterID']"))
+        # centre.select_by_visible_text("HKU B-Active")
+        centre.select_by_visible_text("CSE Active")
+
+        date = Select(driver.find_element(By.XPATH, "//select[@id='DateList']"))
+        date.select_by_value("2023/03/06")
+
+        time = Select(driver.find_element(By.XPATH, "//select[@id='SessionTime']"))
+        time.select_by_value("10124")
+
+        data_collection = driver.find_element(By.XPATH, "//label[@for='dataCollection']")
+        data_collection.click()
+
+        # test = driver.find_element(By.XPATH, "//div[@class='recaptcha-checkbox-border']")
+        # WebDriverWait(driver, 20).until(EC.frame_to_be_available_and_switch_to_it(
+        #     (By.CSS_SELECTOR, "#recaptcha-anchor-label")))
+        # WebDriverWait(driver, 10).until(
+        #     EC.element_to_be_clickable((By.XPATH, "//div[@class='recaptcha-checkbox-checkmark']"))).click()
+
+        driver.implicitly_wait(10)
+        WebDriverWait(driver, 10).until(EC.frame_to_be_available_and_switch_to_it(
+            (By.CSS_SELECTOR, "iframe[name^='a-'][src^='https://www.google.com/recaptcha/api2/anchor?']")))
+        WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//span[@id='recaptcha-anchor']"))).click()
+
+        # submit = driver.find_element(By.XPATH, "//button[@id='sbmtBtn']")
+        # submit.click()
         sleep(30)
 
         print("Success!")
