@@ -32,7 +32,7 @@ def hku_gym_bot():
         # website to open
         driver.get("https://fcbooking.cse.hku.hk/Form/SignUp")
         # driver.maximize_window()
-        driver.set_window_size(100, 400)
+        driver.set_window_size(558, 430)
 
         # // img[@class ="imageWithFallback"]
         # link = driver.find_element(By.XPATH, "//a[normalize-space()='sign up now']")
@@ -47,14 +47,14 @@ def hku_gym_bot():
         student_no.send_keys(Student_no)
 
         centre = Select(driver.find_element(By.XPATH, "//select[@id='CenterID']"))
-        # centre.select_by_visible_text("HKU B-Active")
-        centre.select_by_visible_text("CSE Active")
+        centre.select_by_visible_text("HKU B-Active")
+        # centre.select_by_visible_text("CSE Active")
 
         date = Select(driver.find_element(By.XPATH, "//select[@id='DateList']"))
-        date.select_by_value("2023/03/06")
+        date.select_by_value("2023/03/08")
 
         time = Select(driver.find_element(By.XPATH, "//select[@id='SessionTime']"))
-        time.select_by_value("10124")
+        time.select_by_value("10125")
 
         data_collection = driver.find_element(By.XPATH, "//label[@for='dataCollection']")
         data_collection.click()
@@ -65,14 +65,17 @@ def hku_gym_bot():
         # WebDriverWait(driver, 10).until(
         #     EC.element_to_be_clickable((By.XPATH, "//div[@class='recaptcha-checkbox-checkmark']"))).click()
 
+        sleep(10)
         driver.implicitly_wait(10)
         WebDriverWait(driver, 10).until(EC.frame_to_be_available_and_switch_to_it(
             (By.CSS_SELECTOR, "iframe[name^='a-'][src^='https://www.google.com/recaptcha/api2/anchor?']")))
         WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//span[@id='recaptcha-anchor']"))).click()
 
+
         # submit = driver.find_element(By.XPATH, "//button[@id='sbmtBtn']")
         # submit.click()
+
         sleep(30)
 
         print("Success!")
