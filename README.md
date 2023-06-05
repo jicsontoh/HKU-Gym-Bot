@@ -5,6 +5,10 @@ A python script that can help you fill and submit the HKU gym booking form. This
 
 ## Demonstration of how to use
 
+
+https://github.com/jicsontoh/HKU-Gym-Bot/assets/64951628/419b181d-29fd-4876-913f-de4d0430a213
+
+
 ## How to install
 1. Clone this repo
 ```
