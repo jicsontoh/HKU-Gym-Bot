@@ -3,10 +3,11 @@
 ## Basic Overview
 A python script that can help you fill and submit the HKU gym booking form. This script can also be scheduled using cron jobs so that you do not need to fret over getting your desired gym slot.
 
-## Demonstration of how to use
+## Demonstration of Gym Bot
 
 
-https://github.com/jicsontoh/HKU-Gym-Bot/assets/64951628/419b181d-29fd-4876-913f-de4d0430a213
+https://github.com/jicsontoh/HKU-Gym-Bot/assets/64951628/85c7fb8b-8808-4c41-80aa-467bbcf03960
+
 
 
 ## How to install
