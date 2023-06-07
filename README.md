@@ -1,7 +1,7 @@
 # HKU Gym Bot
 
 ## Basic Overview
-A python script that can help you fill and submit the HKU gym booking form. This script can also be scheduled using cron jobs so that you do not need to fret over getting your desired gym slot 💪.
+A python script that can help you fill and submit the HKU gym booking form. This script can also be scheduled using cron jobs so that you do not need to fret over getting your desired gym slot 💪
 
 ## Demonstration of Gym Bot
 
@@ -22,6 +22,12 @@ EMAIL=
 NAME=
 STUDENT_NUM=
 ```
+
+3. Set the path to your chrome browser app in Service
+```
+SER = Service("/Applications/Google\ Chrome.app")
+```
+
 
 ## How to use
 - The script runs with the following command syntax
